@@ -6,9 +6,9 @@
 import React from 'react/addons'
 
 
-class CKEditor extends React.Component {
+class StaticElement extends React.Component {
 
-    // never update so that CKEditor is responsible
+    // never update 
     shouldComponentUpdate() {
         return false
     }
@@ -28,7 +28,7 @@ class CKEditor extends React.Component {
 }
 
 
-export default CKEditor
+export default StaticElement
 
 
 // end of file
