@@ -51,8 +51,12 @@ class RichEditor extends React.Component {
         // render the component
         return (
             <div {...unused_props}>
-                {/* use a static element and let CKEditor take it over */}
-                <StaticElement contentEditable={true} ref="editor_element" 
+                <button onClick={() => {this.editor.execCommand('bold')}}>bold</button>
+                <button onClick={() => {this.editor.execCommand('underline')}}>underline</button>
+                <button onClick={() => {this.editor.execCommand('italic')}}>italic</button>
+                <button onClick={() => {this.editor.execCommand('blockquote')}}>blockquote</button>
+                {/* use a static element and let the authorea editor take it over */}
+                <StaticElement contentEditable={true} ref="editor_element"  id="editor_element"
                                innerHTML={initialContent}/>
             </div>
         )
