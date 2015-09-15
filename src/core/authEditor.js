@@ -2,6 +2,8 @@
 import debounce from 'lodash/function/debounce'
 import map from 'lodash/collection/map'
 import unique from 'lodash/array/uniq'
+// local imports
+import CitationWidget from './plugins/citations'
 
 // handle the underlying logic of the authorea editor
 export default class AuthEditor {
@@ -14,9 +16,20 @@ export default class AuthEditor {
         this.configureEnvironment = this.configureEnvironment.bind(this)
         this.attachEventHandlers = this.attachEventHandlers.bind(this)
         this.remove = this.remove.bind(this)
+        
         this.selectionUpdated = this.selectionUpdated.bind(this)
-        this.updateElementPath = this.updateElementPath.bind(this)
         this.getElementPath = this.getElementPath.bind(this)
+
+        this.bold = this.bold.bind(this)
+        this.header = this.header.bind(this)
+        this.italic = this.italic.bind(this)
+        this.underline = this.underline.bind(this)
+        this.blockquote = this.blockquote.bind(this)
+        this.numberedList = this.numberedList.bind(this)
+        this.unorderedList = this.unorderedList.bind(this)
+        this.indentList = this.indentList.bind(this)
+        this.outdentList = this.outdentList.bind(this)
+        this.insertCitation = this.insertCitation.bind(this)
 
         // configure the CKEditor environment
         this.configureEnvironment()
@@ -29,7 +42,11 @@ export default class AuthEditor {
 
 
     configureEnvironment() {
-        this.editor.config.extraAllowedContent = 'strong em u blockquote'
+        // add the necessary plugins to the editor environment
+        CKEDITOR.plugins.add('citations', CitationWidget)
+
+        this.editor.config.extraAllowedContent = 'strong em u blockquote ol ul cite'
+        this.editor.config.extraPlugins = 'citations'
     }
 
 
@@ -39,36 +56,79 @@ export default class AuthEditor {
 
 
     execCommand(command, ...args) {
-        console.log(`executing ${command} with args: ${args}`)
         // execute the given command
         this.editor.execCommand(command, ...args)
-        // update the element path after execuitng the command
-        this.updateElementPath()
+    }
+
+
+    bold() {
+        this.execCommand('bold')
+    }
+
+
+    italic(){
+        this.execCommand('italic')
+    }
+
+
+    underline(){
+        this.execCommand('underline')
+    }
+
+
+    blockquote() {
+        this.execCommand('blockquote')
+    }
+
+
+    numberedList() {
+        this.execCommand('numberedlist')
+    }
+
+
+    unorderedList() {
+        this.execCommand('bulletedlist')
+    }
+
+
+    indentList() {
+        this.execCommand('indentlist')
+    }
+
+
+    outdentList() {
+        this.execCommand('outdentlist')
+    }
+
+    insertCitation() {
+        this.execCommand('citation')
+    }
+
+
+    header(level) {
+        // create the CKEditor style for the headers
+        const style = new CKEDITOR.style({element: `h${level}`})
+        // if the style is already applied
+        if(style.checkActive(this.getElementPath(), this.editor)) {
+            // remove the style
+            this.editor.removeStyle(style)
+        // otherwise the style has not been applied to the selection
+        } else {
+            /// apply the style
+            this.editor.applyStyle(style)
+        }
     }
 
 
     selectionUpdated(){
         // grab the current selection
         let selection = this.editor.getSelection()
-
-        // update the element path
-        this.updateElementPath()
     }
 
 
     getElementPath() {
-        // generate a unique mapping of the element path
-        return unique(map(this.editor.elementPath().elements, (element) => {
-            // with the name of the element
-            return element.getName ? element.getName() : ''
-        }))
-    }
-
-
-    updateElementPath() {
-        // get the names of elements in the element path
-        const elementPath = this.getElementPath()
-        console.log(elementPath)
+        // return the CKEditor path object
+        return this.editor.elementPath()
     }
 
 

@@ -7,6 +7,7 @@ import StyleSheet from 'react-style'
 // local imports
 import StaticElement from './staticElement'
 import AuthEditor from '../core'
+import Toolbar from './toolbar'
 
 
 class RichEditor extends React.Component {
@@ -32,8 +33,10 @@ class RichEditor extends React.Component {
 
     // called when the component is first mounted
     componentDidMount() {
-        // create the authorea editor instance around the node
-        this.editor = new AuthEditor(React.findDOMNode(this.refs['editor_element']))
+        this.setState({
+            // create the authorea editor instance around the node
+            editor: new AuthEditor(React.findDOMNode(this.refs['editor_element']))
+        })
         // when the selection changes, we need to update the toolbar
     }
 
@@ -51,10 +54,7 @@ class RichEditor extends React.Component {
         // render the component
         return (
             <div {...unused_props}>
-                <button onClick={() => {this.editor.execCommand('bold')}}>bold</button>
-                <button onClick={() => {this.editor.execCommand('underline')}}>underline</button>
-                <button onClick={() => {this.editor.execCommand('italic')}}>italic</button>
-                <button onClick={() => {this.editor.execCommand('blockquote')}}>blockquote</button>
+                <Toolbar editor={this.state.editor}/>
                 {/* use a static element and let the authorea editor take it over */}
                 <StaticElement contentEditable={true} ref="editor_element"  id="editor_element"
                                innerHTML={initialContent}/>
