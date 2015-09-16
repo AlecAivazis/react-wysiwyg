@@ -55,7 +55,7 @@ export default {
                 function insert_callback(bib_key, bib_text, type, display_text) {
                     // use the bib key if there is no display text
                     display_text = display_text || bib_key
-         
+
                     // set the assoiciated data for the citation
                     self.setData({
                         bib_key: bib_key, 
