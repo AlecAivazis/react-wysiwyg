@@ -23,6 +23,7 @@
     "gulp-flowtype": "^0.4.8",
     "vinyl-named": "^1.1.0",
     "webpack": "^1.12.1",
-    "webpack-stream": "^2.1.0"
+    "webpack-stream": "^2.1.0",
+    "katex": "0.5.1"
   }
 }

@@ -4,6 +4,8 @@ import map from 'lodash/collection/map'
 import unique from 'lodash/array/uniq'
 // local imports
 import CitationWidget from './plugins/citations'
+import TableWidget from './plugins/tables'
+import EquationWidget from './plugins/equations'
 
 // handle the underlying logic of the authorea editor
 export default class AuthEditor {
@@ -30,6 +32,7 @@ export default class AuthEditor {
         this.indentList = this.indentList.bind(this)
         this.outdentList = this.outdentList.bind(this)
         this.insertCitation = this.insertCitation.bind(this)
+        this.equation = this.equation.bind(this)
 
         // configure the CKEditor environment
         this.configureEnvironment()
@@ -44,9 +47,11 @@ export default class AuthEditor {
     configureEnvironment() {
         // add the necessary plugins to the editor environment
         CKEDITOR.plugins.add('citations', CitationWidget)
+        CKEDITOR.plugins.add('equations', EquationWidget)
 
+        // configure the ck environment
         this.editor.config.extraAllowedContent = 'strong em u blockquote ol ul cite'
-        this.editor.config.extraPlugins = 'citations'
+        this.editor.config.extraPlugins = 'citations,equations'
     }
 
 
@@ -102,6 +107,10 @@ export default class AuthEditor {
 
     insertCitation() {
         this.execCommand('citation')
+    }
+
+    equation(){
+        this.execCommand('equation')
     }
 
 
