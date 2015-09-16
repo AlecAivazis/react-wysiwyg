@@ -59,6 +59,8 @@ export default {
                     blocking_variable = 'dont-edit'
                 }
 
+                // the previous equation used by the element
+                const previous_equation = element.data('equation')
 
                 // TODO: replace blocking magic with async/await refactoring of open_citaion_modal
                 while(!blocking_variable){

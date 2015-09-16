@@ -52,6 +52,7 @@ class Toolbar extends React.Component {
                 <button onClick={editor.insertCitation}>citation</button>
                 <button onClick={editor.equation}>equation</button>
                 <button onClick={editor.link}>link</button>
+                <button onClick={editor.table}>table</button>
             </div>
         ) : <div {...unused_props} />
     }

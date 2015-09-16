@@ -35,6 +35,7 @@ export default class AuthEditor {
         this.insertCitation = this.insertCitation.bind(this)
         this.equation = this.equation.bind(this)
         this.link = this.link.bind(this)
+        this.table = this.table.bind(this)
 
         // configure the CKEditor environment
         this.configureEnvironment()
@@ -51,10 +52,11 @@ export default class AuthEditor {
         CKEDITOR.plugins.add('citations', CitationWidget)
         CKEDITOR.plugins.add('equations', EquationWidget)
         CKEDITOR.plugins.add('links', LinkWidget)
+        CKEDITOR.plugins.add('tables', TableWidget)
 
         // configure the ck environment
-        this.editor.config.extraAllowedContent = 'strong em u blockquote ol ul cite a'
-        this.editor.config.extraPlugins = 'citations,equations,links'
+        this.editor.config.extraAllowedContent = 'strong em u blockquote ol ul cite a table'
+        this.editor.config.extraPlugins = 'citations,equations,links,tables'
     }
 
 
@@ -73,36 +75,29 @@ export default class AuthEditor {
         this.execCommand('bold')
     }
 
-
     italic(){
         this.execCommand('italic')
     }
-
 
     underline(){
         this.execCommand('underline')
     }
 
-
     blockquote() {
         this.execCommand('blockquote')
     }
-
 
     numberedList() {
         this.execCommand('numberedlist')
     }
 
-
     unorderedList() {
         this.execCommand('bulletedlist')
     }
 
-
     indentList() {
         this.execCommand('indentlist')
     }
-
 
     outdentList() {
         this.execCommand('outdentlist')
@@ -118,6 +113,10 @@ export default class AuthEditor {
 
     link() {
         this.execCommand('link')
+    }
+
+    table() {
+        this.execCommand('table')
     }
 
 
