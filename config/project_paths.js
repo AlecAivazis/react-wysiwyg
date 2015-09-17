@@ -13,6 +13,7 @@ var rute = path.join(__dirname, '..')
 var config_dir = path.join(rute, 'config')
 // source directory
 var source_dir = path.join(rute, 'src')
+var example_dir = path.join(rute, 'example')
 
 
 // export the project paths|globs object
@@ -27,7 +28,8 @@ module.exports = {
     webpack_live_config: path.join(config_dir, 'webpack.live.config.js'),
     eslint_config: path.join(config_dir, 'eslintrc'),
     babel_config: path.join(config_dir, 'babel.config.js'),
-    entry: path.join(source_dir, 'index.js'),
+    example_dir: example_dir,
+    entry: path.join(example_dir, 'index.js'),
 }
 
 

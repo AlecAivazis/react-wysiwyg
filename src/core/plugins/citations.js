@@ -1,3 +1,5 @@
+import once from 'lodash/function/once'
+
 // a CKEditor widget for displaying citations exposed as a general plugin
 export default {
     // require the general widget plugin
@@ -47,17 +49,16 @@ export default {
             edit: function() {
                 // save a reference to the element for the widget
                 const element = this.element
-                let self = this
 
                 let blocking_variable = false
 
                 // the callback that creates a citation out of the data from the modal
-                function insert_callback(bib_key, bib_text, type, display_text) {
+                let insert_callback = (bib_key, bib_text, type, display_text) => {
                     // use the bib key if there is no display text
                     display_text = display_text || bib_key
 
                     // set the assoiciated data for the citation
-                    self.setData({
+                    this.setData({
                         bib_key: bib_key, 
                         bib_text: bib_text, 
                         type: type, 
@@ -74,15 +75,21 @@ export default {
                     blocking_variable = 'dont-edit'
                 }
 
-
-                // TODO: replace blocking magic with async/await refactoring of open_citaion_modal
-                while(!blocking_variable){
+                // use the default handler if they didn't specify one
+                let blocking_handler = editor.config.open_citaion_modal || () => {
+                    // ask them for a
                     let value = prompt('text?')
                     if(value){
                         insert_callback(value, '..', )
                     } else {
                         cancel_edit()
                     }
+                }
+
+
+                // TODO: replace blocking magic with async/await refactoring of open_citaion_modal
+                while(!blocking_variable){
+                    once(default_blocking_handler)()
                 }
 
                 if (blocking_variable == 'dont-edit'){

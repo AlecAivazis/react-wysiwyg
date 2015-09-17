@@ -4,9 +4,9 @@
 // third party imports
 import React from 'react/addons'
 import StyleSheet from 'react-style'
+// authorea-editor 
+import {StaticElement, AuthEditor} from '../src/'
 // local imports
-import StaticElement from './staticElement'
-import AuthEditor from '../core'
 import Toolbar from './toolbar'
 
 
@@ -37,7 +37,6 @@ class RichEditor extends React.Component {
             // create the authorea editor instance around the node
             editor: new AuthEditor(React.findDOMNode(this.refs['editor_element']))
         })
-        // when the selection changes, we need to update the toolbar
     }
 
 
