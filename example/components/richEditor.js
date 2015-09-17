@@ -5,10 +5,9 @@
 import React from 'react/addons'
 import StyleSheet from 'react-style'
 // authorea-editor 
-import {StaticElement, AuthEditor} from '../src/'
+import {StaticElement, AuthEditor} from '../../src/index'
 // local imports
 import Toolbar from './toolbar'
-
 
 class RichEditor extends React.Component {
 
@@ -27,7 +26,9 @@ class RichEditor extends React.Component {
         // instantiate this
         super(props)
         // set the initial state
-        this.state = {}
+        this.state = {
+            editor: null
+        }
     }
 
 
