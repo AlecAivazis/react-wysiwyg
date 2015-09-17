@@ -54,7 +54,7 @@ export default class AuthEditor {
         CKEDITOR.plugins.add('links', LinkWidget)
         CKEDITOR.plugins.add('tables', TableWidget)
 
-        // configure the ck environment
+        // configure the CKEnvironment
         this.editor.config.extraAllowedContent = 'strong em u blockquote ol ul cite a table'
         this.editor.config.extraPlugins = 'citations,equations,links,tables'
     }

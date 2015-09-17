@@ -11,6 +11,7 @@
   "author": "Alec Aivazis <alec@aivazis.com> (alec@aivazis.com)",
   "license": "ISC",
   "dependencies": {
+    "katex": "0.5.1",
     "lodash": "^3.10.1"
   },
   "devDependencies": {
@@ -22,7 +23,6 @@
     "gulp": "^3.9.0",
     "gulp-flowtype": "^0.4.8",
     "karma": "^0.13.9",
-    "katex": "0.5.1",
     "react": "^0.13.3",
     "react-style": "^0.5.5",
     "vinyl-named": "^1.1.0",
