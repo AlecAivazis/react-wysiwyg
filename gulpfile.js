@@ -47,6 +47,17 @@ gulp.task('build', ['clean'], function() {
 
 
 /**
+ * Build frontend entry points for production.
+ */
+gulp.task('build-prod', ['clean'], function() {
+    return gulp.src(project_paths.entry)
+        .pipe(named())
+        .pipe(webpack(require(project_paths.webpack_prod_config)))
+        .pipe(gulp.dest(project_paths.build_dir))
+})
+
+
+/**
  * Watch source for changes, (development) build on change.
  */
 gulp.task('watch', ['clean'], function() {
@@ -60,6 +71,7 @@ gulp.task('watch', ['clean'], function() {
         .pipe(gulp.dest(project_paths.build_dir))
 })
 
+
 /**
  * Watch example for changes, (development) build on change.
  */
@@ -71,17 +83,6 @@ gulp.task('watch-example', function() {
             require(project_paths.webpack_dev_config),
             {watch: true}
         )))
-        .pipe(gulp.dest(project_paths.build_dir))
-})
-
-
-/**
- * Build frontend entry points for production.
- */
-gulp.task('build-prod', ['clean'], function() {
-    return gulp.src(project_paths.entry)
-        .pipe(named())
-        .pipe(webpack(require(project_paths.webpack_prod_config)))
         .pipe(gulp.dest(project_paths.build_dir))
 })
 
