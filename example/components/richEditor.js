@@ -5,9 +5,10 @@
 import React from 'react/addons'
 import StyleSheet from 'react-style'
 // authorea-editor 
-import {StaticElement, AuthEditor} from '../../src/index'
+import AuthEditor from '../../src/authEditor'
 // local imports
 import Toolbar from './toolbar'
+import StaticElement from './staticElement'
 
 class RichEditor extends React.Component {
 

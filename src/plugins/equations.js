@@ -1,6 +1,6 @@
 import katex from 'katex'
 
-// a CKEditor widget for displaying citations exposed as a general plugin
+// a CKEditor widget for displaying equations exposed as a general plugin
 export default {
     // require the general widget plugin
     requires: 'widget',

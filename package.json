@@ -1,17 +1,17 @@
 {
-  "name": "authorea-editor",
+  "name": "@aaivazis/authorea-editor",
   "version": "0.0.2",
   "description": "",
-  "main": "build/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test",
+    "build": "gulp build",
+    "prepublish": "gulp build-prod"
   },
   "author": "Alec Aivazis <alec@aivazis.com> (alec@aivazis.com)",
   "license": "ISC",
   "dependencies": {
-    "karma": "^0.13.9",
-    "lodash": "^3.10.1",
-    "react-style": "^0.5.5"
+    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "babel": "^5.8.23",
@@ -21,9 +21,12 @@
     "eslint": "^1.4.1",
     "gulp": "^3.9.0",
     "gulp-flowtype": "^0.4.8",
+    "karma": "^0.13.9",
+    "katex": "0.5.1",
+    "react": "^0.13.3",
+    "react-style": "^0.5.5",
     "vinyl-named": "^1.1.0",
     "webpack": "^1.12.1",
-    "webpack-stream": "^2.1.0",
-    "katex": "0.5.1"
+    "webpack-stream": "^2.1.0"
   }
 }
