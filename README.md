@@ -1,3 +1,3 @@
 # react-wysiwyg
 
-A react wysiwyg editor based on CKEditor
+A wysiwyg editor with an engine based on CKEditor and a few React components to act as a toolbar.
