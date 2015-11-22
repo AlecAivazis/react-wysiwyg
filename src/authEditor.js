@@ -8,8 +8,8 @@ import TableWidget from './plugins/tables'
 import EquationWidget from './plugins/equations'
 import LinkWidget from './plugins/links'
 
-// handle the underlying logic of the authorea editor
-export default class AuthEditor {
+
+export default class Editor {
     // called when the class is instantiated
     constructor(node) {
         // instantiate CKEditor over the specified node
