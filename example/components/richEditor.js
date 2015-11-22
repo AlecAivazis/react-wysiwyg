@@ -10,7 +10,7 @@ import AuthEditor from '../../src/authEditor'
 import Toolbar from './toolbar'
 import StaticElement from './staticElement'
 
-class RichEditor extends React.Component {
+class Editor extends React.Component {
 
     
     static propTypes = {
@@ -67,7 +67,7 @@ class RichEditor extends React.Component {
 const styles = StyleSheet.create({})
 
 
-export default RichEditor
+export default Editor
 
 
 // end of file
