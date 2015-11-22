@@ -5,7 +5,7 @@
 import React from 'react/addons'
 import StyleSheet from 'react-style'
 // authorea-editor 
-import AuthEditor from '../../src/authEditor'
+import EditorCore from '../../src/editor'
 // local imports
 import Toolbar from './toolbar'
 import StaticElement from './staticElement'
@@ -36,8 +36,8 @@ class Editor extends React.Component {
     // called when the component is first mounted
     componentDidMount() {
         this.setState({
-            // create the authorea editor instance around the node
-            editor: new AuthEditor(React.findDOMNode(this.refs['editor_element']))
+            // create the editor instance around the node
+            editor: new EditorCore(React.findDOMNode(this.refs['editor_element']))
         })
     }
 
