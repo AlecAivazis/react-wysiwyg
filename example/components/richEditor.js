@@ -56,7 +56,7 @@ class RichEditor extends React.Component {
         return (
             <div {...unused_props}>
                 <Toolbar editor={this.state.editor}/>
-                {/* use a static element and let the authorea editor take it over */}
+                {/* use a static element and let the editor take it over */}
                 <StaticElement contentEditable={true} ref="editor_element"  id="editor_element"
                                innerHTML={initialContent}/>
             </div>
