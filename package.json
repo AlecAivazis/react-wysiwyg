@@ -1,8 +1,8 @@
 {
-  "name": "@aaivazis/authorea-editor",
+  "name": "@aaivazis/react-wysiwyg",
   "version": "0.0.6",
   "description": "",
-  "main": "build/authEditor.js",
+  "main": "build/editor.js",
   "scripts": {
     "test": "gulp test",
     "build": "gulp build",
